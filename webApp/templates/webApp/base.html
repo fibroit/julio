@@ -1,0 +1,73 @@
+{% load static tailwind_tags %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
+    <title>PackStore</title>
+</head>
+<body class="bg-gray-100">
+
+
+    <nav class="bg-blue-300 shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="/home" class="text-2xl font-semibold text-gray-800">PackStore</a>
+            <ul class="flex space-x-6">
+                <li>
+                    <a href="/home" class="font-semibold text-black-600 hover:text-gray-800">Inicio</a>
+                </li>
+                
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/dashboard" class="font-semibold text-black-600 hover:text-gray-800">Panel</a>
+                </li> 
+                <li>
+                    <a href="/cerrarSesion" class="font-semibold text-black-600 hover:text-gray-800">Cerrar Sesión</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/registro" class="font-semibold text-black-600 hover:text-gray-800">Registro</a>
+                </li>
+                <li>
+                    <a href="/iniciarSesion" class="font-semibold text-black-600 hover:text-gray-800">Iniciar Sesión</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-10 px-6">
+        {% block content %}
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800">Explorar Productos</h3>
+                <p class="text-gray-600 mt-2">Encuentra una variedad de productos en nuestra tienda.</p>
+                <a href="/productos" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Productos</a>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800">Administrar Categorías</h3>
+                <p class="text-gray-600 mt-2">Agrega y organiza las categorías de productos.</p>
+                <a href="/categorias" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Categorías</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800">Gestionar Clientes</h3>
+                <p class="text-gray-600 mt-2">Consulta y administra la información de tus clientes.</p>
+                <a href="/clientes" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Clientes</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-semibold text-gray-800">Revisar Pedidos</h3>
+                <p class="text-gray-600 mt-2">Consulta el estado de los pedidos realizados.</p>
+                <a href="/pedidos" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Pedidos</a>
+            </div>
+        </div>
+        
+        {% endblock %}
+    </div>
+
+</body>
+</html>

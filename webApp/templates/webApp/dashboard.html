@@ -1,0 +1,46 @@
+{% extends "webApp/base.html" %}
+
+{% block content %}
+
+<!-- Sección de bienvenida -->
+<section class="bg-blue-500 text-white text-center py-12">
+    <h1 class="text-4xl font-bold">Bienvenido</h1>
+    <p class="text-xl mt-4">Panel de control</p>
+</section>
+
+<!-- Dashboard content -->
+<div class="p-8">
+    <!-- Panel de estadísticas -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Productos -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center mb-15 ">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Productos</h2>
+            <a href="/productos/" class="bg-blue-400 text-white py-2 px-6 rounded hover:bg-blue-600 transition duration-300">Ver Productos</a>
+
+            <ul class="space-y-2">
+                
+                {% for producto in productos %}
+                    <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
+                    
+                {% empty %}
+                
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Categorías -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center mb-15">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Indicadores</h2>
+            <ul class="space-y-5">
+                {% for categoria in categorias %}
+                    <li>{{ categoria.nombre }}</li>
+                {% empty %}
+                {% endfor %}
+            </ul>
+            <a href="/" class="bg-blue-400 text-white py-2 px-6 rounded hover:bg-blue-600 transition duration-300">Ver Graficas</a>
+        </div>
+      
+    </div>
+</div>
+
+{% endblock %}

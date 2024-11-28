@@ -1,0 +1,47 @@
+{% extends "webApp/base.html" %}
+
+{% block content %}
+
+<!-- Sección de bienvenida -->
+<section class="bg-gray-200 text-center py-16">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">Bienvenidos a PackStore</h1>
+    <p class="text-xl text-black-600 mb-6">Explora nuestros productos y crece junto con ellos.</p>
+    {% if user.is_authenticated %}
+    <a href="/productos/" class="bg-blue-400 text-white py-2 px-6 rounded hover:bg-blue-600 transition duration-300">Ver Productos</a>
+{% else %}
+    <p class="text-gray-500">Para ver los productos necesitas iniciar sesión.</p>
+
+    
+{% endif %}
+</section>
+
+<!-- Separador entre secciones -->
+<div class="border-t border-gray-300 my-8"></div>
+
+<!-- Producto 3 -->
+<h1 class="text-center text-3xl font-bold text-gray-800 mb-5">Productos destacados</h1>
+<div class="text-center bg-white rounded-lg shadow-lg overflow-hidden">
+    <img src="https://http2.mlstatic.com/D_NQ_NP_686981-MLM78121195389_082024-O.webp" alt="Paquete Económico" class="w-40 h-40 object-cover mx-auto">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-800 mb-5">Paquete económico</h3>
+        <p class="text-gray-600 mb-5">La opción más accesible sin perder la calidad.</p>
+        <a href="/" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Ir al producto</a>
+    </div>
+
+
+<!-- Separador entre secciones -->
+<div class="border-t border-gray-300 my-8"></div>
+
+<h1 class="text-center text-3xl font-bold text-gray-800 mb-5">Ofertas y novedades</h1>
+<div class="text-center bg-white rounded-lg shadow-lg overflow-hidden">
+    <img src="https://www.futbollecop.com/wp-content/uploads/2018/09/novedades-1024x1024.jpg" alt="Paquete Económico" class="w-40 h-40 object-cover mx-auto">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-black-800 mb-5">No te pierdas de las ofertas exclusivas por temporada</h3>
+        <p class="text-gray-600 mb-5">Descubre ofertas.</p>
+        <a href="/" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Mas información</a>
+    </div>
+
+<!-- Sección de categorías -->
+
+
+{% endblock %}

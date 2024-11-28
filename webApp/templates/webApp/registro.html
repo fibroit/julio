@@ -1,0 +1,40 @@
+{% extends "webApp/base.html" %}
+
+{% block content %}
+
+<h1 class="text-center text-3xl font-bold">PackStore</h1>
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-semibold text-black-300 text-center mb-10">Crear Cuenta</h1>
+
+        {% if error %}
+            <p class="text-red-500 text-center mb-4">{{ error }}</p>
+        {% endif %}
+
+        <form action="/registro/" method="POST" class="text-center mb-4 space-y-4">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-black-700">{{ field.label }}</label>
+                    {{ field }}
+
+                    <!-- Ocultar los errores del campo -->
+                    {% if field.errors %}
+                        <ul class="errorlist" style="display:none;">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="mb-10 w-full py-2 px-4 bg-blue-400 text-white rounded hover:bg-blue-700 transition duration-300 font-semibold">
+                Registrar
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
